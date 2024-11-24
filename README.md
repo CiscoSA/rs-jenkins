@@ -1,38 +1,63 @@
 # Task 6: Application Deployment via Jenkins Pipeline
 
 
-## Steps
+## 1. Pipeline Initialization
 
-1. **Create Docker Image and Store in ECR**
+   - The pipeline is configured with environment variables, AWS credentials, and deployment parameters.
+   - Deployment-specific values, like the Git repository URL, Docker image details, and AWS configurations, are defined for reusability.
 
-   - Create a Docker image for your application.
-   - Store the Docker image in an AWS ECR repository.
-   - Ensure your K8s nodes can access the ECR repository by adjusting or creating a new instance profile for your EC2 instances.
+## 2. Stages Overview
 
-2. **Create Helm Chart**
+1. **Git Checkout from Branch**
 
-   - Create a Helm chart for your application.
-   - Test the Helm chart manually from your local machine.
+   - The pipeline checks out the code from the specified branch of the Git repository.
+   - The branch is selected through the pipeline_branch parameter.
 
-3. **Store Artifacts in Git**
+2. **Docker Build**
 
-   - Store the Dockerfile and Helm chart in a git repository accessible to Jenkins.
+   - The application is built into a Docker image using the Dockerfile.
+   - The environment variables are copied into the image to support the application runtime.
 
-4. **Configure Jenkins Pipeline**
+3. **Testing**
 
-   - Create a Jenkins pipeline and store it as a Jenkinsfile in your main git repository.
-   - Configure the pipeline to be triggered on each push event to the repository.
+   - A test-specific Docker image is built using Dockerfile.test.
+   - Inside this image, the application's tests are executed using yarn test-server.
 
-5. **Pipeline Steps**
 
-   - The pipeline should include the following steps:
-     1. Application build
-     2. Unit test execution
-     3. Security check with SonarQube
-     4. Docker image building and pushing to ECR (manual trigger)
-     5. Deployment to K8s cluster with Helm (dependent on the previous step)
-     6. (Optional) Application verification (e.g., curl main page, send requests to API, smoke test)
+4. **Run SonarQube Analysis**
 
-6. **Additional Tasks**
-   - Set up a notification system to alert on pipeline failures or successes.
-   - Document the pipeline setup and deployment process in a README file.
+   - The code quality is assessed using SonarQube.
+   - The pipeline utilizes the SonarQube scanner tool configured with appropriate credentials.
+
+ 
+5. **Push to ECR (Elastic Container Registry)**
+   - Condition: This stage executes only if the isDeploy parameter is set to true.
+   - The Docker image is tagged and pushed to Amazon ECR, making it available for deployment.
+
+
+6. **Deploy**
+   - Condition: Executes only if isDeploy is true.
+   - The application is deployed using Helm on a Kubernetes cluster.
+   - The Helm chart is used to manage the deployment process, and existing deployments are upgraded or reinstalled.
+
+6. **Health Check**
+   - After deployment, the pipeline performs an HTTP health check on the application's endpoint to ensure successful deployment.
+
+## 3. Post Actions
+
+   - On failure, an email notification is sent to the configured recipient with build details and logs.
+   - Regardless of the outcome, the workspace is cleaned up to maintain consistency between builds.
+
+## 4. Deployment Parameters
+
+   - pipeline_branch: Specifies the branch to deploy (default: task_6).
+   - isDeploy: A boolean flag to indicate whether to push the image to ECR and deploy the application.
+
+## 5. Error Handling
+
+   - If any stage fails, the pipeline aborts and triggers the post-failure actions, including email notifications.
+
+## 6. Environment Variables
+
+   - A set of predefined variables like AWS credentials, Docker image details, and URLs are used throughout the pipeline to ensure portability and secure access to resources.
+
