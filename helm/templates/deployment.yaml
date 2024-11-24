@@ -1,0 +1,28 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}-deploy
+  labels:
+    app : {{ .Values.app }}-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: {{ .Values.project }}
+  template:
+    metadata:
+      labels:
+        project: {{ .Values.project }}
+    spec:
+      containers:
+        - name : {{ .Values.project }}-web
+          image: {{ .Values.image }}
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config #The name(key) value must match pod volumes name(key) value 
+              mountPath: /home/node/app/.env.001
+      volumes:
+        - name: config
+          configMap:
+            name: env-config

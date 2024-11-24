@@ -1,0 +1,6 @@
+namespace: default
+app: sharetribe
+project: task-6
+
+image: public.ecr.aws/e8e7f1b0/rs/task_6:latest
+
