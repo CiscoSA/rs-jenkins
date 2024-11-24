@@ -27,19 +27,27 @@
 
      - Docker image building and pushing to ECR (manual trigger)
 
-       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L86-L95
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L86-L105
 
      - Deployment to K8s cluster with Helm (dependent on the previous step)
      
-       - 
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L107-L116
 
 2. **Artifact Storage (20 points)**
 
    - Built artifacts (Dockerfile, Helm chart) are stored in git and ECR (Docker image).
 
+     - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Dockerfile
+
 3. **Repository Submission (5 points)**
 
    - A repository is created with the application, Helm chart, and Jenkinsfile.
+
+     - https://github.com/CiscoSA/rs-jenkins/tree/task_6
+
+     - https://github.com/CiscoSA/rs-jenkins/tree/task_6/helm
+
+     - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile
 
 4. **Verification (5 points)**
 
@@ -48,7 +56,16 @@
 5. **Additional Tasks (30 points)**
    - **Application Verification (10 points)**
      - Application verification is performed (e.g., curl main page, send requests to API, smoke test).
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L118-L133
+
    - **Notification System (10 points)**
      - A notification system is set up to alert on pipeline failures or successes.
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L138-L150
+
    - **Documentation (10 points)**
      - The pipeline setup and deployment process, are documented in a README file.
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/README.md
+       
