@@ -9,12 +9,29 @@
 1. **Pipeline Configuration (40 points)**
 
    - A Jenkins pipeline is configured and stored as a Jenkinsfile in the main git repository.
+
+     - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile
+
    - The pipeline includes the following steps:
      - Application build
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L55-L62
+
      - Unit test execution
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L64-L73
+
      - Security check with SonarQube
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L75-L84
+
      - Docker image building and pushing to ECR (manual trigger)
+
+       - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L86-L95
+
      - Deployment to K8s cluster with Helm (dependent on the previous step)
+     
+       - 
 
 2. **Artifact Storage (20 points)**
 
