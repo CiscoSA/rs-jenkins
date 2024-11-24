@@ -11,20 +11,20 @@
 2. **Jenkins Plugins:**
    - A set of plugins were installed to extend Jenkins' functionality:
    
-     - Git Plugin: For cloning and managing the source code from Git repositories.
+     - **Git Plugin**: For cloning and managing the source code from Git repositories.
 
-     - Docker Pipeline Plugin: To build and manage Docker images within the pipeline.
+     - **Docker Pipeline Plugin**: To build and manage Docker images within the pipeline.
 
-     - Pipeline Plugin: Enables defining the pipeline as code using a Jenkinsfile.
+     - **Pipeline Plugin**: Enables defining the pipeline as code using a Jenkinsfile.
 
-     - SonarQube Scanner Plugin: Integrates SonarQube for code quality and static analysis.
+     - **SonarQube Scanner Plugin**: Integrates SonarQube for code quality and static analysis.
 
-     - Kubernetes Plugin: Allows Jenkins to dynamically provision Kubernetes pods for executing pipeline steps.
+     - **Kubernetes Plugin**: Allows Jenkins to dynamically provision Kubernetes pods for executing pipeline steps.
 
-     - Email Extension Plugin: For sending email notifications on pipeline success or failure.
+     - **Email Extension Plugin**: For sending email notifications on pipeline success or failure.
 
      - HTTP Request Plugin: Used for performing health checks via HTTP requests.
-     
+
    
 
 3. **Docker Socket Mounting:**
