@@ -73,6 +73,8 @@
 
      ![](Screenshots/ec2.png)
 
+     ![](Screenshots/k8s.png)
+
      ![](Screenshots/app.png)
 
 5. **Additional Tasks (30 points)**
