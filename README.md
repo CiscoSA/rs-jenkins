@@ -39,6 +39,10 @@
 
      - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Dockerfile
 
+     ![](Screenshots/ecr1.png)
+
+     ![](Screenshots/ecr2.png)
+
 3. **Repository Submission (5 points)**
 
    - A repository is created with the application, Helm chart, and Jenkinsfile.
@@ -53,11 +57,31 @@
 
    - The pipeline runs successfully and deploys the application to the K8s cluster.
 
+     ![](Screenshots/jenkins1.png)
+
+     ![](Screenshots/jenkins2.png)
+
+     ![](Screenshots/jenkins3.png)
+
+     ![](Screenshots/jenkins4.png)
+
+     ![](Screenshots/jenkins5.png)
+
+     ![](Screenshots/jenkins6.png)
+
+     ![](Screenshots/jenkins7.png)
+
+     ![](Screenshots/ec2.png)
+
+     ![](Screenshots/app.png)
+
 5. **Additional Tasks (30 points)**
    - **Application Verification (10 points)**
      - Application verification is performed (e.g., curl main page, send requests to API, smoke test).
 
        - https://github.com/CiscoSA/rs-jenkins/blob/task_6/Jenkinsfile#L118-L133
+
+       ![](Screenshots/jenkins8.png)
 
    - **Notification System (10 points)**
      - A notification system is set up to alert on pipeline failures or successes.
